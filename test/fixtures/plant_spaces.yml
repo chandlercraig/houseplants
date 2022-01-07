@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sunlight_rating: 1
+  temp: MyString
+  humidity: MyString
+  house_id: 1
+
+two:
+  name: MyString
+  sunlight_rating: 1
+  temp: MyString
+  humidity: MyString
+  house_id: 1
