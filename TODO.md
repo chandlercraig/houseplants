@@ -1,8 +1,12 @@
 Planning Houseplants App
 -----
 USERS!
-GET /register
+GET /signup
 	show sign up form
+		-first name
+		-last name
+		-email
+		-password
 POST /users
 	create and validate user in database
 
