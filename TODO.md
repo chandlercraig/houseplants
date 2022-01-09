@@ -1,19 +1,19 @@
 Planning Houseplants App
 -----
 USERS!
-GET /signup
+GET /signup √
 	show sign up form
 		-first name
 		-last name
 		-email
 		-password
-POST /users
+POST /users 
 	create and validate user in database
 
 GET /login
 	show login form
 POST /login
-	create user session and redirect 
+	create user session and redirect
 -----
 HOUSES!
 GET /houses/new
