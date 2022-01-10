@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <% if current_user %> 
+          <%= button_to "Log Out", logout_path, method: :delete %>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
     <%= yield %>
   </body>
 </html>

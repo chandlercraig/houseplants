@@ -1,17 +1,19 @@
 Planning Houseplants App
 -----
 USERS!
-GET /signup √
-	show sign up form
+GET /signup 
+	show sign up form ◊
 		-first name
 		-last name
 		-email
 		-password
-POST /users 
+	show Omniauth signup
+POST /users ◊
 	create and validate user in database
 
 GET /login
-	show login form
+	show login form ◊
+	show Omniauth login
 POST /login
 	create user session and redirect
 -----

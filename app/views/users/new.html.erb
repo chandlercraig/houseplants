@@ -2,22 +2,9 @@
 <h3>Register below to organize the plants around your home!</h3>
 
 <%= form_for @user do |f| %>
-  First Name:
-  <br>
-  <%= f.text_field :first_name %>
-  <br>
-  Last Name:
-  <br>
-  <%= f.text_field :last_name %>
-  <br>
-  Email:
-  <br>
-  <%= f.text_field :email %>
-  <br>
-  Password:
-  <br>
-  <%= f.password_field :password %>
-  <br>
-  <br>
+  <p>♥First Name: <%= f.text_field :first_name %></p>
+  <p>♥Last Name: <%= f.text_field :last_name %></p>
+  <p>♥Email: <%= f.text_field :email %></p>
+  <p>♥Password: <%= f.password_field :password %></p>
   <%= f.submit%>
 <% end %>
