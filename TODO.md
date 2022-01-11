@@ -11,11 +11,24 @@ GET /signup
 POST /users ◊
 	create and validate user in database
 
-GET /login
-	show login form ◊
-	show Omniauth login
-POST /login
+GET /signin
+	show signin form ◊
+	show Omniauth signin
+POST /sigin ◊
 	create user session and redirect
+
+GET /users/:id
+	show current user info
+		-name ◊
+		-houses associated with user
+			-other users, if any, that have joined that house
+	button to create new house
+		-redirect to 'houses/new'
+
+		notes:
+			-still need OmniAuth functionality
+			-cleanup layout
+
 -----
 HOUSES!
 GET /houses/new
