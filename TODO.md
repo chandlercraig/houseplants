@@ -2,24 +2,24 @@ Planning Houseplants App
 -----
 USERS!
 GET /signup 
-	show sign up form ◊
+	show sign up form √
 		-first name
 		-last name
 		-email
 		-password
 	show Omniauth signup
-POST /users ◊
+POST /users √
 	create and validate user in database
 
 GET /signin
-	show signin form ◊
+	show signin form √
 	show Omniauth signin
-POST /sigin ◊
+POST /sigin √
 	create user session and redirect
 
 GET /users/:id
 	show current user info
-		-name ◊
+		-name √
 		-houses associated with user
 			-other users, if any, that have joined that house
 	button to create new house
@@ -32,14 +32,18 @@ GET /users/:id
 -----
 HOUSES!
 GET /houses/new
-	show form to make house
+	show form to make house √
 		-has a name
-		-has plant spaces
 POST /houses
 	save house form data to db
 
 GET /houses
+	displays all current user's houses
 GET /houses/:id
+	show form to make plant spaces
+		-has name
+
+
 PATCH /houses/:id
 
 -----
@@ -47,9 +51,12 @@ PLANT SPACES!
 GET /plant-spaces/new
 	show form to make a plant space
 		-has a name
-		-has a sunlight rating (1-10)
+		-has a sunlight_rating
+		-has a temp
+		-has a humidity
+		<!-- -has a sunlight rating (1-10)
 		-has a temperature dropdown with options (hot, warm, mild, cool, cold)
-		-has a humidity dropdown with options (wet, damp, neutral, arid)
+		-has a humidity dropdown with options (wet, damp, neutral, arid) -->
 POST /plant-spaces
 	save plant space form to db
 

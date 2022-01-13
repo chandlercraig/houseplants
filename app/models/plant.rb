@@ -1,4 +1,4 @@
 class Plant < ApplicationRecord
-	belongs_to :plant_space
-  belongs_to :house
+	has_many :plant_spaces
+  has_many :houses, through: :plant_spaces
 end
