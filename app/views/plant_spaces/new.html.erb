@@ -1,0 +1,9 @@
+<a>Give your house some spaces where plants currently live or where you would like new plants to go.</a>
+
+<%= form_with url: house_plant_spaces_path do |f| %>
+  <p>♥Name: <%= f.text_field :name %></p>
+  <p>♥Sunlight Rating: <%= f.select :sunlight_rating, 1..5 %></p>
+  <p>♥Temperature: <%= f.select :temp, ["cold", "cool", "mild", "warm", "hot"] %></p>
+  <p>♥Humidity: <%= f.select :humidity, ["dry", "moderate", "damp", "wet"] %></p>
+  <%= f.submit%>
+<% end %>

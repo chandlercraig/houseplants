@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
   resources :users, only: [:create, :show]
-  resources :houses, only: [:index, :new, :create, :show]
-  resources :plant_spaces
+
+  resources :houses do 
+    resources :plant_spaces
+  end
+  
   resources :plants 
 end
