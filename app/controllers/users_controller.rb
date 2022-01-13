@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 			# session[:user_id] = @user.id
 			redirect_to user_path(@user)
 		else
-			redirect_to 'new'
+			flash[:notice] = 'We need more info from you!'
 		end
 	end
 

@@ -1,4 +1,6 @@
 class House < ApplicationRecord
+  validates :name, presence: true
+  
 	has_many :user_houses
 	has_many :users, through: :user_houses
   has_many :plant_spaces

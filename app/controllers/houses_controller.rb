@@ -17,7 +17,7 @@ class HousesController < ApplicationController
       if @house.save
         redirect_to @house
       else
-        redirect_to new_house_path, alert: "Your house must have a name"
+        redirect_to new_house_path, alert: "Your house needs a name!" 
       end
   end
 
