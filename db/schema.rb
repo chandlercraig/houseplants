@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_023337) do
+ActiveRecord::Schema.define(version: 2022_01_13_024958) do
 
   create_table "houses", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "plant_spaces", force: :cascade do |t|
@@ -34,13 +35,6 @@ ActiveRecord::Schema.define(version: 2022_01_13_023337) do
     t.integer "sunlight_req"
     t.string "temp_req"
     t.string "humidity_req"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_houses", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "house_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
