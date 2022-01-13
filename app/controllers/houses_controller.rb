@@ -2,7 +2,8 @@ class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update]
   
   def index
-    @houses = House.all
+    
+    @houses = current_user.houses.all
   end
 
   def show
@@ -14,6 +15,7 @@ class HousesController < ApplicationController
 
   def create
     @house = House.new(house_params)
+    @house.user_id = current_user.id
       if @house.save
         redirect_to @house
       else
@@ -28,6 +30,6 @@ class HousesController < ApplicationController
   end
 
   def house_params
-      params.require(:house).permit(:name)
+      params.require(:house).permit(:name, :user_id)
   end
 end

@@ -8029,3 +8029,332 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 3087)
 
 
+Started GET "/logout" for ::1 at 2022-01-13 12:06:24 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms | Allocations: 1326)
+
+
+Started GET "/" for ::1 at 2022-01-13 12:06:24 -0800
+Processing by WelcomeController#welcome as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/welcome.html.erb within layouts/application
+  Rendered welcome/welcome.html.erb within layouts/application (Duration: 1.2ms | Allocations: 337)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 7673)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 0.6ms | Allocations: 9484)
+
+
+Started GET "/signin" for ::1 at 2022-01-13 12:06:25 -0800
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 389)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2583)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.1ms | Allocations: 3492)
+
+
+Started POST "/signin" for ::1 at 2022-01-13 12:06:35 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"lord@farquad.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lord@farquad.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+Redirected to http://localhost:3000/users/11
+Completed 302 Found in 223ms (ActiveRecord: 0.4ms | Allocations: 4521)
+
+
+Started GET "/users/11" for ::1 at 2022-01-13 12:06:35 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 198)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2293)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 3941)
+
+
+Started GET "/houses/new" for ::1 at 2022-01-13 12:06:43 -0800
+Processing by HousesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering houses/new.html.erb within layouts/application
+  Rendered houses/new.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1983)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 4060)
+Completed 200 OK in 27ms (Views: 16.4ms | ActiveRecord: 0.6ms | Allocations: 9601)
+
+
+Started POST "/houses" for ::1 at 2022-01-13 12:06:55 -0800
+Processing by HousesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "house"=>{"name"=>"Castle Rock"}, "commit"=>"Create House"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/houses_controller.rb:17:in `create'
+  [1m[36mHouse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "houses" WHERE "houses"."name" = ? LIMIT ?[0m  [["name", "Castle Rock"], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/houses_controller.rb:17:in `create'
+Redirected to http://localhost:3000/houses/new
+Completed 302 Found in 26ms (ActiveRecord: 0.4ms | Allocations: 6640)
+
+
+Started GET "/houses/new" for ::1 at 2022-01-13 12:06:55 -0800
+Processing by HousesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering houses/new.html.erb within layouts/application
+  Rendered houses/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 352)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 2444)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.1ms | Allocations: 2851)
+
+
+Started POST "/houses" for ::1 at 2022-01-13 12:08:56 -0800
+Processing by HousesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "house"=>{"name"=>"Castle"}, "commit"=>"Create House"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/houses_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/houses_controller.rb:17:in `create'
+  [1m[36mHouse Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "houses" WHERE "houses"."name" = ? LIMIT ?[0m  [["name", "Castle"], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/houses_controller.rb:17:in `create'
+Redirected to http://localhost:3000/houses/new
+Completed 302 Found in 17ms (ActiveRecord: 1.3ms | Allocations: 9898)
+
+
+Started GET "/houses/new" for ::1 at 2022-01-13 12:08:56 -0800
+Processing by HousesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering houses/new.html.erb within layouts/application
+  Rendered houses/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 410)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 6215)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.6ms | Allocations: 6760)
+
+
+Started POST "/houses" for ::1 at 2022-01-13 12:16:16 -0800
+Processing by HousesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "house"=>{"name"=>"Castle"}, "commit"=>"Create House"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/houses_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/houses_controller.rb:18:in `create'
+  [1m[36mHouse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "houses" WHERE "houses"."name" = ? LIMIT ?[0m  [["name", "Castle"], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:18:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:18:in `create'
+  [1m[36mHouse Create (0.4ms)[0m  [1m[32mINSERT INTO "houses" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "Castle"], ["created_at", "2022-01-13 20:16:16.141960"], ["updated_at", "2022-01-13 20:16:16.141960"], ["user_id", 11]]
+  ↳ app/controllers/houses_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/houses_controller.rb:18:in `create'
+Redirected to http://localhost:3000/houses/23
+Completed 302 Found in 26ms (ActiveRecord: 1.8ms | Allocations: 15365)
+
+
+Started GET "/houses/23" for ::1 at 2022-01-13 12:16:16 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:28:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 191)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2272)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 3594)
+
+
+Started GET "/houses" for ::1 at 2022-01-13 12:16:23 -0800
+Processing by HousesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering houses/index.html.erb within layouts/application
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
+  ↳ app/views/houses/index.html.erb:1
+  Rendered houses/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1082)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3179)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 3711)
+
+
+Started GET "/houses/23" for ::1 at 2022-01-13 12:16:27 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:28:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 68)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2143)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 3084)
+
+
+Started GET "/houses/23" for ::1 at 2022-01-13 12:18:00 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:28:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 197)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2560)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.2ms | Allocations: 4262)
+
+
+Started GET "/houses" for ::1 at 2022-01-13 12:20:20 -0800
+Processing by HousesController#index as HTML
+Completed 500 Internal Server Error in 6ms (Allocations: 4076)
+
+
+  
+NoMethodError (undefined method `houses' for User (call 'User.connection' to establish a connection):Class):
+  
+app/controllers/houses_controller.rb:5:in `index'
+Started GET "/houses/23" for ::1 at 2022-01-13 12:21:22 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/houses_controller.rb:29:in `set_house'
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:29:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 94)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 7098)
+Completed 200 OK in 28ms (Views: 17.5ms | ActiveRecord: 1.5ms | Allocations: 13837)
+
+
+Started GET "/houses" for ::1 at 2022-01-13 12:21:24 -0800
+Processing by HousesController#index as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2954)
+
+
+  
+NameError (undefined local variable or method `rails' for #<HousesController:0x007fdbf6d6c728>
+Did you mean?  raise):
+  
+app/controllers/houses_controller.rb:5:in `index'
+Started GET "/houses/23" for ::1 at 2022-01-13 12:23:23 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/houses_controller.rb:29:in `set_house'
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:29:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 75)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 6954)
+Completed 200 OK in 22ms (Views: 9.9ms | ActiveRecord: 2.1ms | Allocations: 13372)
+
+
+Started GET "/houses" for ::1 at 2022-01-13 12:23:24 -0800
+Processing by HousesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/index.html.erb within layouts/application
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/views/houses/index.html.erb:1
+  Rendered houses/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1456)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3503)
+Completed 200 OK in 11ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 5920)
+
+
+Started GET "/houses/23" for ::1 at 2022-01-13 12:23:40 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:29:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 69)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2144)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 3085)
+
+
+Started GET "/houses/new" for ::1 at 2022-01-13 12:23:41 -0800
+Processing by HousesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering houses/new.html.erb within layouts/application
+  Rendered houses/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 618)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2698)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.1ms | Allocations: 3232)
+
+
+Started POST "/houses" for ::1 at 2022-01-13 12:25:11 -0800
+Processing by HousesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "house"=>{"name"=>"Party Zone"}, "commit"=>"Create House"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/houses_controller.rb:19:in `create'
+  [1m[36mHouse Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "houses" WHERE "houses"."name" = ? LIMIT ?[0m  [["name", "Party Zone"], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:19:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:19:in `create'
+  [1m[36mHouse Create (0.5ms)[0m  [1m[32mINSERT INTO "houses" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "Party Zone"], ["created_at", "2022-01-13 20:25:11.758483"], ["updated_at", "2022-01-13 20:25:11.758483"], ["user_id", 11]]
+  ↳ app/controllers/houses_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/houses_controller.rb:19:in `create'
+Redirected to http://localhost:3000/houses/24
+Completed 302 Found in 21ms (ActiveRecord: 1.5ms | Allocations: 5258)
+
+
+Started GET "/houses/24" for ::1 at 2022-01-13 12:25:11 -0800
+Processing by HousesController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/houses_controller.rb:29:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/show.html.erb within layouts/application
+  Rendered houses/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 68)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2144)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 3086)
+
+
+Started GET "/houses" for ::1 at 2022-01-13 12:25:15 -0800
+Processing by HousesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/index.html.erb within layouts/application
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/views/houses/index.html.erb:1
+  Rendered houses/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 718)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2756)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.4ms | Allocations: 3829)
+
+
