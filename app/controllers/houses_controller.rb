@@ -2,7 +2,6 @@ class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update]
   
   def index
-    
     @houses = current_user.houses.all
   end
 
