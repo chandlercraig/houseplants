@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show]
 
   resources :houses do
-    resources :plant_spaces, only: [:new, :create, :show]
+    resources :plant_spaces, only: [:new, :create]
   end
 
-  resources :plant_spaces, except: [:new, :create, :show]
+  resources :plant_spaces, except: [:new, :create]
   resources :plants 
 end

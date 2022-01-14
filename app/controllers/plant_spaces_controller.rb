@@ -15,7 +15,6 @@ class PlantSpacesController < ApplicationController
 
   def create
     @plant_space = PlantSpace.new(plant_space_params)
-    @plant_space.house_id = @house.id
     if @plant_space.save
       redirect_to houses_path
     else
@@ -35,6 +34,6 @@ class PlantSpacesController < ApplicationController
   end
 
   def plant_space_params
-    params.require(:plant_space).permit(:name, :sunlight_rating, :temp, :humidity, :house_id)
+    params.permit(:name, :sunlight_rating, :temp, :humidity, :house_id)
   end
 end
