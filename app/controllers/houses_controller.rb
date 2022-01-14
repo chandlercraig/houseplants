@@ -6,7 +6,6 @@ class HousesController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -17,7 +16,7 @@ class HousesController < ApplicationController
     @house = House.new(house_params)
     @house.user_id = current_user.id
       if @house.save
-        redirect_to new_house_plant_space_path(@house)
+        redirect_to houses_path
       else
         redirect_to new_house_path, alert: "Your house needs a name!" 
       end

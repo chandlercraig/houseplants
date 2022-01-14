@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
+  
   resources :users, only: [:create, :show]
 
-  resources :houses do 
-    resources :plant_spaces
+  resources :houses do
+    resources :plant_spaces, only: [:new, :create, :show]
   end
-  
+
+  resources :plant_spaces, except: [:new, :create, :show]
   resources :plants 
 end

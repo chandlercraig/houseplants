@@ -2,5 +2,5 @@ class PlantSpace < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
 	belongs_to :house
-  belongs_to :plant
+  belongs_to :plant, optional: true
 end
