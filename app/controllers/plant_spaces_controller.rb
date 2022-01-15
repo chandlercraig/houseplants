@@ -34,6 +34,6 @@ class PlantSpacesController < ApplicationController
   end
 
   def plant_space_params
-    params.permit(:name, :sunlight_rating, :temp, :humidity, :house_id)
+    params.require(:plant_space).permit(:name, :sunlight_rating, :temp, :humidity, :house_id)
   end
 end

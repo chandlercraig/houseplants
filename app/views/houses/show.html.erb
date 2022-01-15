@@ -1,3 +1,11 @@
 <h3><%= @house.name %></h3>
 
+<p>
+<% @house_spaces.each do |space| %>
+  <p>
+  <strong><%= link_to "#{space.name}", house_plant_space_path(space) %></strong>
+  </p>
+<% end %>
+</p>
+
 <p><%= link_to "All Houses", houses_path %></p>

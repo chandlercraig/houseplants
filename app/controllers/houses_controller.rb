@@ -6,6 +6,7 @@ class HousesController < ApplicationController
   end
 
   def show
+    @house_spaces = @house.plant_spaces
   end
 
   def new
