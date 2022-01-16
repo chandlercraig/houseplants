@@ -16513,3 +16513,115 @@ Processing by HousesController#index as HTML
 Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.3ms | Allocations: 3988)
 
 
+Started GET "/houses" for ::1 at 2022-01-16 11:40:30 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HousesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/index.html.erb within layouts/application
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/houses/index.html.erb:2
+  Rendered houses/index.html.erb within layouts/application (Duration: 31.0ms | Allocations: 4649)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Started GET "/houses" for ::1 at 2022-01-16 11:40:31 -0800
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 713.7ms | Allocations: 11876)
+Completed 200 OK in 741ms (Views: 717.1ms | ActiveRecord: 1.3ms | Allocations: 26735)
+
+
+Processing by HousesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/index.html.erb within layouts/application
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/houses/index.html.erb:2
+  Rendered houses/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 965)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3456)
+Completed 200 OK in 11ms (Views: 6.6ms | ActiveRecord: 0.6ms | Allocations: 5251)
+
+
+Started GET "/houses/34/plant_spaces/new" for ::1 at 2022-01-16 11:40:33 -0800
+Processing by PlantSpacesController#new as HTML
+  Parameters: {"house_id"=>"34"}
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT "houses".* FROM "houses" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/plant_spaces_controller.rb:33:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering plant_spaces/new.html.erb within layouts/application
+  Rendered plant_spaces/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 4035)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 6115)
+Completed 200 OK in 24ms (Views: 14.0ms | ActiveRecord: 0.8ms | Allocations: 13388)
+
+
+Started POST "/houses/34/plant_spaces" for ::1 at 2022-01-16 11:41:36 -0800
+Processing by PlantSpacesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"Cold Cut Bay Window", "sunlight_rating"=>"5", "temp"=>"hot", "humidity"=>"wet", "commit"=>"Save ", "house_id"=>"34"}
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/plant_spaces_controller.rb:33:in `set_house'
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.1ms | Allocations: 1327)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: plant_space):
+  
+app/controllers/plant_spaces_controller.rb:37:in `plant_space_params'
+app/controllers/plant_spaces_controller.rb:17:in `create'
+Started POST "/houses/34/plant_spaces" for ::1 at 2022-01-16 11:42:16 -0800
+Processing by PlantSpacesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"Cold Cut Bay Window", "sunlight_rating"=>"5", "temp"=>"hot", "humidity"=>"wet", "commit"=>"Save ", "house_id"=>"34"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/plant_spaces_controller.rb:33:in `set_house'
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/plant_spaces_controller.rb:33:in `set_house'
+[31mUnpermitted parameters: :authenticity_token, :commit[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/plant_spaces_controller.rb:18:in `create'
+  [1m[36mPlantSpace Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plant_spaces" WHERE "plant_spaces"."name" = ? LIMIT ?[0m  [["name", "Cold Cut Bay Window"], ["LIMIT", 1]]
+  ↳ app/controllers/plant_spaces_controller.rb:18:in `create'
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/plant_spaces_controller.rb:18:in `create'
+  [1m[36mPlantSpace Create (0.4ms)[0m  [1m[32mINSERT INTO "plant_spaces" ("name", "sunlight_rating", "temp", "humidity", "house_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cold Cut Bay Window"], ["sunlight_rating", 5], ["temp", "hot"], ["humidity", "wet"], ["house_id", 34], ["created_at", "2022-01-16 19:42:16.831459"], ["updated_at", "2022-01-16 19:42:16.831459"]]
+  ↳ app/controllers/plant_spaces_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/plant_spaces_controller.rb:18:in `create'
+Redirected to http://localhost:3000/houses
+Completed 302 Found in 24ms (ActiveRecord: 2.4ms | Allocations: 16723)
+
+
+Started GET "/houses" for ::1 at 2022-01-16 11:42:16 -0800
+Processing by HousesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering houses/index.html.erb within layouts/application
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT "houses".* FROM "houses" WHERE "houses"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/houses/index.html.erb:2
+  Rendered houses/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1771)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 7363)
+Completed 200 OK in 26ms (Views: 8.8ms | ActiveRecord: 0.7ms | Allocations: 15032)
+
+
+Started GET "/houses/34/plant_spaces/new" for ::1 at 2022-01-16 11:42:35 -0800
+Processing by PlantSpacesController#new as HTML
+  Parameters: {"house_id"=>"34"}
+  [1m[36mHouse Load (0.1ms)[0m  [1m[34mSELECT "houses".* FROM "houses" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/plant_spaces_controller.rb:33:in `set_house'
+  Rendering layout layouts/application.html.erb
+  Rendering plant_spaces/new.html.erb within layouts/application
+  Rendered plant_spaces/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 2360)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4437)
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 5620)
+
+
