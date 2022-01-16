@@ -1,6 +1,13 @@
+<br>
 <% @houses.each do |house| %>
   <p>
   <strong><%= link_to "#{house.name}", house_path(house) %></strong> | 
   <%= link_to "Create Spaces", new_house_plant_space_path(house) %>
   </p>
 <% end %>
+
+<br>
+
+<p>
+  <%= link_to "Create New House", new_house_path %>
+</p>
