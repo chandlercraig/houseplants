@@ -16,7 +16,7 @@ class PlantSpacesController < ApplicationController
   def create
     @plant_space = PlantSpace.new(plant_space_params)
     if @plant_space.save
-      redirect_to houses_path
+      redirect_to house_plant_space_path(@house, @plant_space)
     else
       flash[:alert] = "Couldn't save that space"
       render :new
@@ -26,11 +26,11 @@ class PlantSpacesController < ApplicationController
   private
 
   def set_plant_space
-    @plant_space = PlantSpace.find_by(id: params[:id])  
+    @plant_space = PlantSpace.find_by_id(params[:id])  
   end
 
   def set_house
-    @house = House.find_by(params[:id])
+    @house = House.find_by_id(params[:house_id])
   end
 
   def plant_space_params
