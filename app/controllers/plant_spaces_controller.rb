@@ -1,12 +1,13 @@
 class PlantSpacesController < ApplicationController
-  before_action :set_house, only: [:index, :new, :create]
-  before_action :set_plant_space, only: [:show, :edit, :update]
+  before_action :set_house, only: [:show, :new, :create]
+  before_action :set_plant_space, only: [:show, :edit, :update, :destroy]
 
   def index
     @plant_spaces = PlantSpace.all
   end
 
   def show
+    
   end
 
   def new
@@ -25,12 +26,12 @@ class PlantSpacesController < ApplicationController
 
   private
 
-  def set_plant_space
-    @plant_space = PlantSpace.find_by_id(params[:id])  
+  def set_house
+    @house = House.find_by(id: params[:house_id])
   end
 
-  def set_house
-    @house = House.find_by_id(params[:house_id])
+  def set_plant_space
+    @plant_space = PlantSpace.find(params[:id]) 
   end
 
   def plant_space_params

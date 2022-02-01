@@ -3,7 +3,7 @@
 <p>
 <% @house_spaces.each do |space| %>
   <p>
-  <strong><%= link_to "#{space.name}", house_plant_space_path(space) %></strong>
+  <strong><%= link_to "#{space.name}", house_plant_space_path(@house, space) %></strong>
   </p>
 <% end %>
 </p>
