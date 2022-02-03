@@ -1,1 +1,13 @@
-<h3>Plant Space names go here</h3>
+<br>
+<% @house_spaces.each do |space| %>
+  <p>
+  <strong><%= link_to "#{space.name}", plant_space_path(space) %></strong> | 
+  <%= link_to "Put a plant on #{space.name} ", new_plant_space_plant_path(space) %>
+  </p>
+<% end %>
+
+<br>
+
+<p>
+  <%= link_to "Create New Plant Space", new_house_plant_space_path %>
+</p>

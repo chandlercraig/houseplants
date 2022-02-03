@@ -1,5 +1,8 @@
 <h3><%= @plant_space.name %></h3>
 
+<%= link_to "Put a plant on #{@plant_space.name} ", new_plant_space_plant_path(@plant_space) %>
+
+
 <p>
-  <%= link_to 'All Plant Spaces', house_plant_spaces_path %>
+  <%= link_to 'All Plant Spaces', house_plant_spaces_path(@house) %>
 </p>

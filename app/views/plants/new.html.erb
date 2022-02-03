@@ -1,0 +1,11 @@
+<a>Make a plant!</a>
+
+<%= form_with url: plant_space_plants_path do |f| %>
+  <p>♥Name: <%= f.text_field :name %></p>
+  <p>♥Sunlight Requirement: <%= f.select :sunlight_rating, 1..5 %></p>
+  <p>♥Temperature Requirement: <%= f.select :temp, ["cold", "cool", "mild", "warm", "hot"] %></p>
+  <p>♥Humidity Requirement: <%= f.select :humidity, ["dry", "moderate", "damp", "wet"] %></p>
+  <%= f.submit%>
+<% end %>
+
+<p><%= link_to "All Houses", houses_path %></p>
